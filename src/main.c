@@ -17,6 +17,8 @@ static void repl() {
             break;
         }
 
+        printf("%s", line);
+
         interpret(line);
     }
 }
@@ -63,7 +65,7 @@ int main(int argc, const char* argv[]) {
     initVM();
 
     if (argc == 1) {
-        printf("Starting REPL/n");
+        printf("Starting REPL\n");
         repl();
     } else if (argc == 2) {
         runFile(argv[1]);

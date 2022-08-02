@@ -2,7 +2,9 @@
 #define CLOX_VM_H
 
 #include "chunk.h"
+#include "table.h"
 #include "value.h"
+#include "object.h"
 
 #define STACK_MAX 256
 
@@ -11,6 +13,9 @@ typedef struct {
   uint8_t* ip;  // instruction pointer
   Value stack[STACK_MAX];
   Value* stackTop;
+  Table globals;
+  Table strings;
+  Obj* objects; // header of the linked list for GC
 } VM;
 
 typedef enum {
@@ -18,6 +23,8 @@ typedef enum {
   INTERPRET_COMPILE_ERROR,
   INTERPRET_RUNTIME_ERROR
 } InterpretResult;
+
+extern VM vm;
 
 void initVM();
 void freeVM();
