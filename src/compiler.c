@@ -715,7 +715,7 @@ static void classDeclaration() {
         emitByte(OP_INHERIT);
     }
 
-    if (identifierEqual(&className, &parser.previous)) {
+    if (identifiersEqual(&className, &parser.previous)) {
         error("A class can't inherit from itself.");
     }
 
